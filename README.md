@@ -299,7 +299,7 @@ Use Tunneling Insights for education, authorized defensive research, and isolate
 
 ## License
 
-No license file is currently included. Contact the repository owner for permission before reusing or redistributing this project.
+This project is available under the [MIT License](LICENSE). You may use, modify, and redistribute it, including for educational purposes, provided the copyright and license notices are retained. The MIT License also permits commercial use. See the license text for the full terms.
 
 ## Links
 
