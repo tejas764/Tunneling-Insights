@@ -2,7 +2,6 @@
 
 **A local cybersecurity lab for understanding DNS tunneling behavior and exploring explainable detection.**
 
-**Created and maintained by [@tejas764](https://github.com/tejas764).**
 
 Tunneling Insights demonstrates a complete defensive analysis workflow: generate controlled DNS traffic, capture packets, extract behavioral features, compare traffic with a normal baseline, and inspect detection results in an interactive dashboard.
 
