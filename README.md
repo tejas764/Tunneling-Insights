@@ -7,6 +7,8 @@ Tunneling Insights demonstrates a complete defensive analysis workflow: generate
 
 > **Use only in an authorized, isolated lab.** This project is an educational prototype. It is not a production intrusion detection system, and its scores are indicators for investigation rather than proof of malicious activity.
 
+[Overview](#project-at-a-glance) · [Installation](#installation) · [Dashboard](#run-the-dashboard) · [Analysis](#run-the-analysis-pipeline) · [Limitations](#limitations) · [License](#license)
+
 ## Project at a glance
 
 - Build a small, controlled DNS message transport using Base32 encoded chunks and a test namespace.
@@ -20,25 +22,16 @@ This repository contains the complete application, datasets, tests, screenshots,
 
 ## How it works
 
-```text
-Harmless test message
-        |
-        v
-UTF-8 -> Base32 -> payload chunks
-        |
-        v
-DNS queries under tunnel.test
-        |
-        +--> Local receiver validates and reassembles the message
-        |
-        v
-PCAP capture -> feature extraction -> time windows
-        |
-        v
-Normal traffic baseline -> explainable score and severity
-        |
-        +--> Offline evaluation
-        +--> Streamlit dashboard and live CSV log
+```mermaid
+flowchart TD
+    Message["Harmless lab message"] --> Queries["Encoded DNS queries"]
+    Queries --> Receiver["Local receiver"]
+    Queries --> Capture["PCAP capture"]
+    Capture --> Features["Features and time windows"]
+    Baseline["Normal baseline"] --> Scoring["Explainable scoring"]
+    Features --> Scoring
+    Scoring --> Evaluation["Offline evaluation"]
+    Scoring --> Dashboard["Dashboard"]
 ```
 
 The example protocol uses this query-name structure:
@@ -150,6 +143,12 @@ Tunneling-Insights/
 ```
 
 The feature CSVs and PCAP files provide ready-to-use sample data. `live_windows.csv` is the output log used by live monitoring; the dashboard shows an empty state when no live records are present.
+
+## Screenshots
+
+![Dashboard overview](docs/screenshots/Overview.png)
+
+[Detection analysis](docs/screenshots/Detection%20Analysis.png) · [Live monitoring](docs/screenshots/Live%20Monitoring.png)
 
 ## Requirements
 
